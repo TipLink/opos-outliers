@@ -1,0 +1,52 @@
+{
+  "name": "c-creatures",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "shadow:create-account": "shdw-drive create-storage-account -kp ./keypair.json -n 'opos-outliers' -s 1GB"
+  },
+  "dependencies": {
+    "@metaplex-foundation/mpl-bubblegum": "^0.7.0",
+    "@metaplex-foundation/mpl-token-metadata": "^2.13.0",
+    "@metaplex-foundation/umi": "^0.8.7",
+    "@metaplex-foundation/umi-bundle-defaults": "^0.8.7",
+    "@metaplex-foundation/umi-uploader-bundlr": "^0.8.7",
+    "@project-serum/anchor": "^0.26.0",
+    "@shadow-drive/cli": "^0.5.3",
+    "@shadow-drive/sdk": "^4.0.3",
+    "@solana/spl-account-compression": "^0.1.10",
+    "@solana/web3.js": "^1.78.3",
+    "@tiplink/api": "^0.1.2",
+    "@types/node": "20.4.7",
+    "@types/react": "18.2.18",
+    "@types/react-dom": "18.2.7",
+    "classnames": "^2.3.2",
+    "deterministic-object-hash": "^1.3.1",
+    "encoding": "^0.1.13",
+    "jimp": "^0.22.10",
+    "lucide-react": "^0.263.1",
+    "memfs": "^4.2.1",
+    "next": "13.4.12",
+    "node-fetch": "^3.3.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sharp": "^0.32.4",
+    "short-unique-id": "^4.4.4",
+    "unique-names-generator": "^4.7.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "10.4.14",
+    "bun": "^0.7.3",
+    "daisyui": "^3.5.1",
+    "eslint": "8.46.0",
+    "eslint-config-next": "13.4.12",
+    "postcss": "8.4.27",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.1.6"
+  }
+}

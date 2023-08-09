@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.backdrop-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* styles.css or tailwind.css */
+.loading-btn {
+    position: relative;
+}
+
+.loading-btn::before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;  /* Adjust this value for loader size */
+    height: 20px; /* Adjust this value for loader size */
+    margin-top: -10px; /* Half of width */
+    margin-left: -10px; /* Half of height */
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
