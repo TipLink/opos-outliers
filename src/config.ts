@@ -42,7 +42,7 @@ export const config: MintConfig  = {
     attributes: {
         "Background": {
             "Abstract": "https://opos-outliers.vercel.app/attributes/Backgrounds/Abstract.png",
-            // "TipLink": "https://opos-outliers.vercel.app/attributes/Backgrounds/TipLink.png",
+            "TipLink": "https://opos-outliers.vercel.app/attributes/Backgrounds/TipLink.png",
             "Blue": "https://opos-outliers.vercel.app/attributes/Backgrounds/Blue.png",
             "Green": "https://opos-outliers.vercel.app/attributes/Backgrounds/Green.png",
             "Grey": "https://opos-outliers.vercel.app/attributes/Backgrounds/Grey.png",
