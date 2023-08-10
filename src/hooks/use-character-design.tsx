@@ -14,25 +14,27 @@ import { useStageMint, useMintStaged } from "@/hooks/use-mint";
 
 import { useGenerateMedia } from "@/hooks/use-generate";
 
+import { config } from "@/config";
+
 export const CharacterDesignContext = createContext<CharacterDesign>(undefined!);
 
 export const useCharacterDesign = () => useContext(CharacterDesignContext);
 
 const randomItem = (arr: any[]) => {
-    let item = arr[Math.floor(Math.random() * arr.length)];
+    let item;
 
-    while(item === "None" && item !== "Background") {
+    while(item === "None" || !item) {
         item = arr[Math.floor(Math.random() * arr.length)];
     }
 
+    console.log(arr, item)
     return item;
 };
 
 const randomKey = (obj: Record<string, any>) => randomItem(Object.keys(obj));
 
-export function CharacterDesignProvider({ children, config }: { children: ReactNode, config: MintConfig }) {
-
-    const initialValues = {
+export function CharacterDesignProvider({ children }: { children: ReactNode, config: MintConfig }) {
+    const [attributeValuesMap, setAttributeValuesMap] = useState<AttributesMap>({
         Background: "Abstract",
         "Skin Color": "Human 1",
         Face: "Smile",
@@ -41,9 +43,7 @@ export function CharacterDesignProvider({ children, config }: { children: ReactN
         Logo: "TipLink",       
         Legs: "TipLink Pants",
         Feet: "TipLink Shoes",
-    };
-
-    const [attributeValuesMap, setAttributeValuesMap] = useState<AttributesMap>(initialValues);
+    });
     
     const [showConfirmMint, setShowConfirmMint] = useState(false);
 
@@ -55,24 +55,22 @@ export function CharacterDesignProvider({ children, config }: { children: ReactN
 
     const [ isMinting, setIsMinting ] = useState(false);
 
-    const generateRandomMap = () => {
-        setAttributeValuesMap({
-            Background: randomKey(config.attributes.Background),
-            "Skin Color": randomKey(config.attributes["Skin Color"]),
-            Face: randomKey(config.attributes.Face),
-            Head: randomKey(config.attributes.Head),  
-            Torso: randomKey(config.attributes.Torso),  
-            Logo: randomKey(config.attributes.Logo),       
-            Legs: randomKey(config.attributes.Legs),
-            Feet: randomKey(config.attributes.Feet),
-        });
-    }
-
+    
     const setAttributeValue = (attributeName: string, newValue: string) => {
         attributeValuesMap[attributeName] = newValue;
-
+        
         setAttributeValuesMap({ ...attributeValuesMap });
     };
+
+    const randomize = () => {
+        const random = {} as Record<string, any>;
+
+        for(const key in config.attributes) {
+            random[key] = randomKey(config.attributes[key]);
+
+            setAttributeValuesMap(random);
+        }
+    }
 
     const mint = async () => {
         if(isMinting) {
@@ -123,8 +121,6 @@ export function CharacterDesignProvider({ children, config }: { children: ReactN
     };
 
     const generate = () => generatePreview(attributeValuesMap);
-
-    const randomize = () => generateRandomMap();
 
     // Generate preview on attribute change
     useEffect(() => {
