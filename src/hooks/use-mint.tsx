@@ -22,6 +22,7 @@ export function useStageMint()  {
         try {
             const {
                 imageUrl,
+                secondaryImageUrl
             } = await generateAndUploadMedia({ attributes });
 
             const {
@@ -29,6 +30,7 @@ export function useStageMint()  {
             } = await generateAndUploadMetadata({
                 attributes,
                 imageUrl,
+                secondaryImageUrl,
             });
 
             setStagedMint((prev) => ({

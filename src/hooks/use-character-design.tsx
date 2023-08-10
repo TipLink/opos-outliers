@@ -119,9 +119,7 @@ export function CharacterDesignProvider({ children, config }: { children: ReactN
         }
     };
 
-    const generate = () => {
-        generatePreview(attributeValuesMap);
-    }
+    const generate = () => generatePreview(attributeValuesMap);
 
     const randomize = () => generateRandomMap();
 
