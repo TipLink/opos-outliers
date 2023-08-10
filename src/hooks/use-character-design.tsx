@@ -94,7 +94,20 @@ export function CharacterDesignProvider({ children, config }: { children: ReactN
     
             // Update the tab URL once minting completes
             if (result?.tiplinkUrl) {
-                window.location.href = result.tiplinkUrl;
+
+                const url = new URL(window.location.href);
+
+                const customRedirect = url.searchParams.get("redirect") || "";
+
+                if(customRedirect) {
+                    const urlString = encodeURIComponent(customRedirect);
+
+                    const [_, hash] = result.tiplinkUrl.split("#");
+
+                    return window.location.href = "https://" + urlString + "/i#" + hash;
+                }
+
+                return window.location.href = result.tiplinkUrl;
             }
         } catch (error) {
             console.log(error)
@@ -111,7 +124,6 @@ export function CharacterDesignProvider({ children, config }: { children: ReactN
     }
 
     const randomize = () => generateRandomMap();
-
 
     // Generate preview on attribute change
     useEffect(() => {
