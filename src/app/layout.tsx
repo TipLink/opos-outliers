@@ -15,6 +15,9 @@ export default function RootLayout({
         <html lang="en">
             <head>
                 <title>OPOS Outliers</title>
+
+                <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+                
                 <meta
                     name="robots"
                     content="noindex"

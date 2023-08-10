@@ -137,22 +137,18 @@ export const generateAndUploadMedia = async ({ attributes } : { attributes : Att
     if(!media?.primary || !media?.pfp) {
         throw new Error("Something went wrong generating the media");
     }
-
-    let tries = 0;
-
-    let uri = "";
-
-    while (tries < 3 && !uri) {
-        try {
-            uri = await uploadFile(media.primary as Buffer, "image.png");
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    
+    const [
+        imageUrl,
+        secondaryImageUrl,
+    ] = await Promise.all([
+        uploadFile(media.primary as Buffer, "image.png"),
+        uploadFile(media.pfp as Buffer, "pfp.png"),
+    ]);
 
     return {
-        imageUrl: uri,
-        pfpUpload: undefined
+        imageUrl,
+        secondaryImageUrl,
     }
 }
 
@@ -175,17 +171,7 @@ export const generateAndUploadMetadata = async ({
 
     const metadataBuffer = Buffer.from((JSON.stringify(metadata)), "utf-8");
 
-    let tries = 0;
-
-    let uri = "";
-
-    while (tries < 3 && !uri) {
-        try {
-            uri = await uploadFile(metadataBuffer, "metadata.json");
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    const uri = await uploadFile(metadataBuffer, "metadata.json");
 
     console.log("Metadata uploaded!", uri);
 
