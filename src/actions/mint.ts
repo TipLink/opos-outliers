@@ -30,16 +30,14 @@ import { keypairFromEnvironment } from '@/util/keypair-from-envrironment';
 
 import { config } from "@/assets/config";
 
-const treeKeypair = keypairFromEnvironment("TREE_KEYPAIR");
 const payerKeypair = keypairFromEnvironment("PAYER_KEYPAIR");
 
+const merkleTree = new PublicKey(config.tree.publicKey);
+
 const deriveAccounts = () => {
-    if(!treeKeypair) {
-        throw new Error("TREE_KEYPAIR not found in environment");
-    }
 
     const [treeAuthority, _bump] = PublicKey.findProgramAddressSync(
-        [treeKeypair.publicKey.toBuffer()],
+        [merkleTree.toBuffer()],
         BUBBLEGUM_PROGRAM_ID
     );
 
@@ -70,8 +68,8 @@ const createMintInstruction = (
     destination: PublicKey,
     uri: string,
 ) => {
-    if(!treeKeypair) {
-        throw new Error("TREE_KEYPAIR not found in environment");
+    if(!merkleTree) {
+        throw new Error("TREE_KEYPAIR not found");
     } else if (!payerKeypair) {
         throw new Error("PAYER_KEYPAIR not found in environment");
     }
@@ -83,7 +81,7 @@ const createMintInstruction = (
 
     return createMintToCollectionV1Instruction(
         {
-            merkleTree: treeKeypair.publicKey,
+            merkleTree,
             treeAuthority,
             treeDelegate: payerKeypair.publicKey,
             payer: payerKeypair.publicKey,
@@ -126,10 +124,10 @@ export const mint = async ({
     metadataUri
 } : MintInput): Promise<MintResponse> => {
     try {
-        console.log("Minting...", metadataUri, attributes);
+        console.log("Minting...");
 
-        if(!treeKeypair) {
-            throw new Error("TREE_KEYPAIR not found in environment");
+        if(!merkleTree) {
+            throw new Error("merkleTree not found in environment");
         } else if (!payerKeypair) {
             throw new Error("PAYER_KEYPAIR not found in environment");
         }

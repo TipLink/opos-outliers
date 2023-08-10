@@ -5,6 +5,7 @@ const {
     COLLECTION_METADATA_ACCOUNT = "",
     COLLECTION_MASTER_EDITION_ACCOUNT = "",
     SHADOW_ACCOUNT = "",
+    MERKLE_TREE = "",
 } = process.env;
 
 export const config: MintConfig  = {
@@ -20,10 +21,11 @@ export const config: MintConfig  = {
     },
     
     tree: {
-        publicKey: "tL2TAswGPHjtCvxN9ez5y8TDrAU1Pxh8PEVmHC8tiyy",
-        createTreeTransaction: "4XDRvcPnLhCUHBuxgXLvupLkWGmUNSU5Kp9R9XmaE5Gq4n2pzCBD6FjXSbN2JPCDZxpRHbkuFWNSqf7WmfjbWZKK",
+        publicKey: MERKLE_TREE,
+        createTreeTransaction: "3BgCJoaMvLPw5T4AugQsMKV7Bqe9DPLsZKp9LWRPFuWcfuV6mPMP6WtVu1ymuFP2sK3DtEprddxkpwTqqr3u1knE",
         maxBufferSize: 64,
-        maxDepth: 14,
+        maxDepth: 17,
+        canopy: 8,
     },
 
     collection: {

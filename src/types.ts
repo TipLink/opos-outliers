@@ -41,6 +41,7 @@ export type TreeConfig = {
     createTreeTransaction: string,
     maxDepth: number,
     maxBufferSize: number,
+    canopy: number,
 }
 
 export type MintConfig = {
