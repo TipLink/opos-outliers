@@ -70,10 +70,18 @@ export const generateMedia = async (attributes: AttributesMap, { base64 } = { ba
     }), {});
 
     try {
+        const urls = Object.values(attributesToFiles) as string[];
+
+        const downloadImage = async (url:string) => {   
+            const response = await fetch(url);
+            const buffer = Buffer.from(await response.arrayBuffer());
+            return buffer;
+        }
+
         const [
             background,
             ...layers
-        ] = Object.values(attributesToFiles) as string[];
+        ] = await Promise.all(urls.map(downloadImage));
 
         // Composite primary media
         const mainBuffer = await sharp(path.join("src/assets", background))
