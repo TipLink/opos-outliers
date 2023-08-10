@@ -93,7 +93,7 @@ function ArrowSelector({
                 <img src="/leftA.png" alt="My Custom Button" style={{ width: '30px', height: '30px' }} />
             </button>
             <div className="flex-1 bg-magenta-200 text-center overflow-hidden">
-                <p className="text-xs whitespace-nowrap overflow-ellipsis">{label}</p>
+                <p className="text-xs whitespace-nowrap overflow-ellipsis text-white md:text-gray-200">{label}</p>
                 <p className="whitespace-nowrap overflow-ellipsis text-white font-bold">{options[selectedIndex || idx]}</p>
             </div>
             <button className="btn bg-secondary border-0" onClick={next}>
@@ -219,7 +219,7 @@ export function OnlyPossibleOnSolana() {
             <h3 className="font-bold text-xl text-gray-900">Only Possible on Solana</h3>
             <p className="text-gray-800 text-xs mb-2">This project was built for the Only Possible on Solana hackathon to showcase the power of compressed NFTs and TipLink.</p>
             
-            <i className="text-xs text-gray-800">Special Thanks</i>
+            <i className="text-xs text-white md:text-gray-200">Special Thanks</i>
 
             <div className="flex flex-row items-center flex-wrap mt-1">
                 <img src="https://solana.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogotype.e4df684f.svg&w=256&q=75" alt="" className="h-3 mr-4 mb-4" />
