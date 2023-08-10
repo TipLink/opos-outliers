@@ -84,10 +84,10 @@ export const generateMedia = async (attributes: AttributesMap, { base64 } = { ba
         ] = await Promise.all(urls.map(downloadImage));
 
         // Composite primary media
-        const mainBuffer = await sharp(path.join("src/assets", background))
+        const mainBuffer = await sharp(background)
             .composite(
                 layers.map((layer) => ({
-                    input: path.join("src/assets", layer),
+                    input: layer,
                 })
             )).toBuffer();
         
