@@ -118,8 +118,8 @@ function MediaPreview() {
                     <span className="loading loading-spinner loading-md absolute right-3 top-3"></span>
                 )
             }
-            <img alt="preview" className="aspect-ratio w-full rounded-xl" src={mediaState?.data?.primary} />
-            <img alt="preview" className="aspect-ratio w-[35%] absolute right-1 bottom-1 rounded-full shadow-2xl" src={mediaState?.data?.pfp} />
+            <img alt="" className="aspect-ratio w-full rounded-xl" src={mediaState?.data?.primary} />
+            <img alt="" className="aspect-ratio w-[35%] absolute right-1 bottom-1 rounded-full shadow-2xl" src={mediaState?.data?.pfp} />
         </div>
     );
 }
