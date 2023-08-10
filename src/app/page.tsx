@@ -15,7 +15,7 @@ export default function Home() {
                         <img src="x-logo.png" className="h-5" alt="x"/>
                         @TipLinkOfficial
                     </a>
-                    <a className="link flex items-center text-xs" href="" target="_blank">
+                    <a className="link flex items-center text-xs" href="https://discord.gg/tVajHVnv" target="_blank">
                         <img src="discord.svg" className="h-5 mr-3" alt="twitter" />
                         TipLink Discord
                     </a>
