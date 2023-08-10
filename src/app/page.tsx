@@ -7,7 +7,7 @@ export default function Home() {
             <div className="max-w-3xl h-full mx-auto">
                 <CharacterDesign />
             </div>
-            <footer className="flex justify-between flex-wrap">
+            <footer className="flex justify-between items-center flex-wrap">
                 <img src="https://tiplink.io/_next/static/media/powered-tiplink.2b2adbb2.png" className="h-4" alt="tiplink" />
 
                 <div className="flex py-5 md:py-0">
