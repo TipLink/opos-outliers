@@ -12,12 +12,13 @@ export default function Home() {
 
                 <div className="flex py-5 md:py-0">
                     <a className="link flex items-center mr-5 text-xs" href="https://twitter.com/TipLinkOfficial" target="_blank">
-                        <img src="x-logo.png" className="h-5" alt="x"/>
-                        @TipLinkOfficial
+                        Twitter
                     </a>
-                    <a className="link flex items-center text-xs" href="https://discord.gg/tVajHVnv" target="_blank">
-                        <img src="discord.svg" className="h-5 mr-3" alt="twitter" />
-                        TipLink Discord
+                    <a className="link flex items-center text-xs mr-5" href="https://discord.gg/tVajHVnv" target="_blank">
+                        Discord
+                    </a>
+                    <a className="link flex items-center text-xs" href="https://github.com/TipLink/opos-outliers" target="_blank">
+                        GitHub
                     </a>
                 </div>
             </footer>
