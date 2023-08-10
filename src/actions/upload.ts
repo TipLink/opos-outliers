@@ -9,7 +9,7 @@ import { Connection, PublicKey } from "@solana/web3.js";
 
 import * as anchor from "@coral-xyz/anchor";
 
-import { config } from "@/assets/config";
+import { config } from "@/config";
 
 const keypair = keypairFromEnvironment("PAYER_KEYPAIR");
 
