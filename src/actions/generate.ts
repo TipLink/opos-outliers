@@ -2,9 +2,11 @@
 
 import type { AssetMetadata, AttributesMap, GenerateMediaResponse } from '@/types';
 
+import path from "path";
+
 import sharp from "sharp";
 
-import { config } from '@/assets/config';
+import { config } from '@/config';
 
 import { uploadFile } from "@/actions/upload";
 
@@ -68,24 +70,16 @@ export const generateMedia = async (attributes: AttributesMap, { base64 } = { ba
     }), {});
 
     try {
-        const urls = Object.values(attributesToFiles) as string[];
-
-        const downloadImage = async (url:string) => {   
-            const response = await fetch(url);
-            const buffer = Buffer.from(await response.arrayBuffer());
-            return buffer;
-        }
-
         const [
             background,
             ...layers
-        ] = await Promise.all(urls.map(downloadImage));
+        ] = Object.values(attributesToFiles) as string[];
 
         // Composite primary media
-        const mainBuffer = await sharp(background)
+        const mainBuffer = await sharp(path.join("src/assets", background))
             .composite(
                 layers.map((layer) => ({
-                    input: layer,
+                    input: path.join("src/assets", layer),
                 })
             )).toBuffer();
         
@@ -126,8 +120,6 @@ export const generateMedia = async (attributes: AttributesMap, { base64 } = { ba
         }
     }
 }
-
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const generateAndUploadMedia = async ({ attributes } : { attributes : AttributesMap }) => {
     const media = await generateMedia(attributes);
@@ -173,14 +165,7 @@ export const generateAndUploadMetadata = async ({
         secondaryImageUrl,
     });
 
-    console.log({ metadata })
-
     const metadataBuffer = Buffer.from((JSON.stringify(metadata)), "utf-8");
-
-    console.log({
-        metadataBuffer,
-        metadata
-    })
 
     let tries = 0;
 

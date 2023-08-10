@@ -13,7 +13,6 @@ import type { AttributesMap, MintConfig, CharacterDesignContext as CharacterDesi
 import { useStageMint, useMintStaged } from "@/hooks/use-mint";
 
 import { useGenerateMedia } from "@/hooks/use-generate";
-import { set } from "@project-serum/anchor/dist/cjs/utils/features";
 
 export const CharacterDesignContext = createContext<CharacterDesign>(undefined!);
 
@@ -32,7 +31,16 @@ const randomItem = (arr: any[]) => {
 const randomKey = (obj: Record<string, any>) => randomItem(Object.keys(obj));
 
 export function CharacterDesignProvider({ children, config }: { children: ReactNode, config: MintConfig }) {
-    const [attributeValuesMap, setAttributeValuesMap] = useState<AttributesMap>({});
+    const [attributeValuesMap, setAttributeValuesMap] = useState<AttributesMap>({
+        Background: randomKey(config.attributes.Background),
+        "Skin Color": randomKey(config.attributes["Skin Color"]),
+        Face: randomKey(config.attributes.Face),
+        Head: randomKey(config.attributes.Head),  
+        Torso: randomKey(config.attributes.Torso),  
+        Logo: randomKey(config.attributes.Logo),       
+        Legs: randomKey(config.attributes.Legs),
+        Feet: randomKey(config.attributes.Feet),
+    });
     
     const [showConfirmMint, setShowConfirmMint] = useState(false);
 

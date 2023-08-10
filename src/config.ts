@@ -1,0 +1,136 @@
+import type { MintConfig } from "@/types";
+
+const {
+    COLLECTION_MINT = "",
+    COLLECTION_METADATA_ACCOUNT = "",
+    COLLECTION_MASTER_EDITION_ACCOUNT = "",
+    SHADOW_ACCOUNT = "",
+    MERKLE_TREE = "",
+} = process.env;
+
+export const config: MintConfig  = {
+    metadata: {
+        name: "OPOS Outliers",
+        description: "Unlimited compressed NFT characters. Only possible on Solana, powered by TipLink.",
+        symbol: "OPOSOUT",
+        external_url: "https://opos.quest",
+        properties: {
+            files: [],
+            category: "image",
+        },  
+    },
+    
+    tree: {
+        publicKey: MERKLE_TREE,
+        createTreeTransaction: "3BgCJoaMvLPw5T4AugQsMKV7Bqe9DPLsZKp9LWRPFuWcfuV6mPMP6WtVu1ymuFP2sK3DtEprddxkpwTqqr3u1knE",
+        maxBufferSize: 64,
+        maxDepth: 17,
+        canopy: 8,
+    },
+
+    collection: {
+        "collectionMint": COLLECTION_MINT,
+        "collectionMetadataAccount": COLLECTION_METADATA_ACCOUNT,
+        "collectionMasterEditionAccount": COLLECTION_MASTER_EDITION_ACCOUNT,
+        "collectionMetadataUri": "https://shdw-drive.genesysgo.net/7J165fhor8ysTfu46LiKG76gsLzG33coqZQLqhvJYESy/1691558993463.json"
+    },
+
+    storage: {
+        shadowAccount: SHADOW_ACCOUNT,
+    },
+
+    attributes: {
+        "Background": {
+            "Abstract": "./Backgrounds/Abstract.png",
+            "Blue": "./Backgrounds/Blue.png",
+            "Green": "./Backgrounds/Green.png",
+            "Grey": "./Backgrounds/Grey.png",
+            "Pink": "./Backgrounds/Pink.png",
+            "Purple": "./Backgrounds/Purple.png",
+            "Red": "./Backgrounds/Red.png",
+            "Solana": "./Backgrounds/Solana.png",
+            "White": "./Backgrounds/White.png",
+            "Yellow": "./Backgrounds/Yellow.png",
+        },
+        "Skin Color": {
+            "Human 1": "./Heads/Color/Skin1.png",
+            "Human 2": "./Heads/Color/Skin2.png",
+            "Human 3": "./Heads/Color/Skin3.png",
+            "Human 4": "./Heads/Color/Skin4.png",
+            "Human 5": "./Heads/Color/Skin5.png",
+            "Alien": "./Heads/Color/Alien.png",
+            "Zombie": "./Heads/Color/Zombie.png",
+            "None": "./None.png",
+        },
+        "Face": {
+            "Smile": "./Heads/Faces/BasicSmile.png",
+            "Cursed": "./Heads/Faces/Cursed.png",
+            "Duck": "./Heads/Faces/Duck.png",
+            "Red Laser Eyes": "./Heads/Faces/LaserEyesRed.png",
+            "Scarecrow": "./Heads/Faces/Scarecrow.png",
+            "Vampire": "./Heads/Faces/Vampire.png",
+            "Visor": "./Heads/Faces/Visor.png",
+            "Solana Viper": "./Heads/Faces/SolanaViper.png",
+            "TipLink Viper": "./Heads/Faces/TipLinkViper.png",
+            "None": "./None.png",
+        },
+        "Head": {
+            "TipLink Helmet": "./Heads/Special/TippyHead.png",
+            "Baby": "./Heads/Hair/Hair:Hat/Baby.png",
+            "Black Beanie": "./Heads/Hair/Hair:Hat/BeanieBlack.png",
+            "Orange Beanie": "./Heads/Hair/Hair:Hat/BeanieOrange.png",
+            "Solana Beanie": "./Heads/Hair/Hair:Hat/BeanieSolana.png",
+            "Daisy": "./Heads/Hair/Hair:Hat/Daisy.png",
+            "Horns": "./Heads/Hair/Hair:Hat/DevilHorns.png",
+            "Halo": "./Heads/Hair/Hair:Hat/Halo.png",
+            "Black Hat": "./Heads/Hair/Hair:Hat/Hat.png",
+            "Headband": "./Heads/Hair/Hair:Hat/Headband.png",
+            "Mohawk": "./Heads/Hair/Hair:Hat/Mohawk.png",
+            "None": "./None.png",
+        },
+        "Torso": {
+            "TipLink Shirt": "./Torso/Shirt/White.png",
+            "Black Shirt": "./Torso/Shirt/Black.png",
+            "Blue Shirt": "./Torso/Shirt/Blue.png",
+            "Gold Shirt": "./Torso/Shirt/Gold.png",
+            "Green Shirt": "./Torso/Shirt/Green.png",
+            "Grey Shirt": "./Torso/Shirt/Grey.png",
+            "Red Shirt": "./Torso/Shirt/Red.png",
+            "Solana Blue Shirt": "./Torso/Shirt/SolBlue.png",
+            "Solana Green Shirt": "./Torso/Shirt/SolGreen.png",
+            "Solana Purple Shirt": "./Torso/Shirt/SolPurple.png",
+            "None": "./None.png",
+        },
+        "Logo": {
+            "TipLink": "./Torso/Logos/TipLink.png",
+            "Helius": "./Torso/Logos/Helius.png",
+            "None": "./None.png",
+        },
+        "Legs": {
+            "TipLink Pants": "./Legs/Pants/Blue.png",
+            "Brown Pants": "./Legs/Pants/Brown.png",
+            "Dark Grey Pants": "./Legs/Pants/DarkGrey.png",
+            "Light Grey Pants": "./Legs/Pants/LightGrey.png",
+            "Gold Pants": "./Legs/Pants/Gold.png",
+            "Green Pants": "./Legs/Pants/Green.png",
+            "Khaki Pants": "./Legs/Pants/Khaki.png",
+            "Magenta Pants": "./Legs/Pants/Magenta.png",
+            "Red Pants": "./Legs/Pants/Red.png",
+            "Solana Pants": "./Legs/Pants/Solana.png",
+            "None": "./None.png",
+        },
+        "Feet": {
+            "TipLink Shoes": "./Feet/Shoes/Grey.png",
+            "Black Shoes": "./Feet/Shoes/Black.png",
+            "White Shoes": "./Feet/Shoes/White.png",
+            "Blue Shoes": "./Feet/Shoes/Blue.png",
+            "Gold Shoes": "./Feet/Shoes/Gold.png",
+            "Green Shoes": "./Feet/Shoes/Green.png",
+            "Red Shoes": "./Feet/Shoes/Red.png",
+            "Solana Blue Shoes": "./Feet/Shoes/SolBlue.png",
+            "Solana Green Shoes": "./Feet/Shoes/SolGreen.png",
+            "Solana Purple Shoes": "./Feet/Shoes/SolPurple.png",
+            "None": "./None.png",
+        },
+    },
+}

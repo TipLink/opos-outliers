@@ -1,10 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { ArrowLeft, ArrowRight, Download, X } from 'lucide-react';
+import { Download, X } from 'lucide-react';
 import { CharacterDesignProvider, useCharacterDesign } from '@/hooks/use-character-design';
-import { SetStateAction, useEffect, useState } from 'react';
-import classNames from 'classnames';
-import { config } from "@/assets/config";
+import { useEffect, useState } from 'react';
+import classNames from "classnames";
+import { config } from "@/config";
 
 
 type SelectorProps = {
@@ -13,6 +14,60 @@ type SelectorProps = {
     selectedIndex?: number;
     onChange: (idx: number) => void;
 };
+
+
+function RandomButton() {
+    const { randomize } = useCharacterDesign();
+
+    return (
+        <button className="btn bg-secondary w-full border border-0 font-space-mono" onClick={randomize}>Random</button>
+    );
+}
+
+function ConfirmButton() {
+    const { setShowConfirmMint } = useCharacterDesign();
+
+    return (
+        <button className="btn w-full bg-primary bg-gray-900 border-0 font-space-mono" onClick={() => setShowConfirmMint(true)}>
+            Confirm Avatar
+        </button>
+    );
+}
+
+function MintButton() {
+    const {
+        mint,
+        mediaState,
+        isMinting,
+    } = useCharacterDesign();
+
+    return (
+        <>  
+            <div className="w-full">
+                {isMinting && (
+                    <div>
+                        <p>
+                            Minting...
+                        </p>
+
+                        <progress className="progress w-full"></progress>
+                    </div>
+                )}
+
+                <button
+                    onClick={mint}
+                    className={classNames({
+                        "btn btn-success flex-grow w-full": true,
+                        "opacity-50 pointer-none": isMinting,
+                        "btn-success": mediaState.data,
+                    })}
+                >
+                    Free!
+                </button>
+            </div>
+        </>
+    );
+}
 
 function ArrowSelector({
     options,
@@ -48,39 +103,6 @@ function ArrowSelector({
     );
 }
 
-export function AttributeSelector({}) {
-    const { setAttributeValue, attributeValuesMap, config } = useCharacterDesign();
-    const attributes = Object.keys(config.attributes);
-
-    if (!attributes) {
-        return null;
-    }
-
-    return (
-        <div className="w-full">
-            <div className="flex flex-col">
-                {attributes.map((attributeName) => {
-                    const options = Object.keys(config.attributes[attributeName]);
-                    const selectedIndex = options.indexOf(attributeValuesMap[attributeName]);
-
-                    return (
-                        <div className="font-space-mono flex" key={attributeName}>
-                            <ArrowSelector
-                                options={options}
-                                label={attributeName}
-                                selectedIndex={selectedIndex}
-                                onChange={(newAttributeValueIndex) => {
-                                    setAttributeValue(attributeName, options[newAttributeValueIndex]);
-                                }}
-                            />
-                        </div>
-                    );
-                })}
-            </div>
-        </div>
-    );
-}
-
 function MediaPreview() {
     const { mediaState } = useCharacterDesign();
 
@@ -96,50 +118,46 @@ function MediaPreview() {
                     <span className="loading loading-spinner loading-md absolute right-3 top-3"></span>
                 )
             }
-            <img className="aspect-ratio w-full rounded-xl" src={mediaState?.data?.primary} alt="" />
-            <img className="aspect-ratio w-[35%] absolute right-1 bottom-1 rounded-full shadow-2xl" src={mediaState?.data?.pfp} alt="" />
+            <img alt="preview" className="aspect-ratio w-full rounded-xl" src={mediaState?.data?.primary} />
+            <img alt="preview" className="aspect-ratio w-[35%] absolute right-1 bottom-1 rounded-full shadow-2xl" src={mediaState?.data?.pfp} />
         </div>
     );
 }
 
-function MintButton() {
-    const {
-        mint,
-        mediaState,
-        isMinting,
-    } = useCharacterDesign();
+const AttributesArrowSelector = ({ attributeName } : { attributeName : string }) => {
+    const { setAttributeValue, attributeValuesMap } = useCharacterDesign();
 
-    const handleButtonClick = async () => {
-        const result = await mint();
-        
-    };
+    const options = Object.keys(config.attributes[attributeName]);
+    const selectedIndex = options.indexOf(attributeValuesMap[attributeName]);
 
     return (
-        <>  
+        <div className="font-space-mono flex" key={attributeName}>
+            <ArrowSelector
+                options={options}
+                label={attributeName}
+                selectedIndex={selectedIndex}
+                onChange={(newAttributeValueIndex) => {
+                    setAttributeValue(attributeName, options[newAttributeValueIndex]);
+                }}
+            />
+        </div>
+    );
+}
 
-            <div className="w-full">
-                {isMinting && (
-                    <div>
-                        <p>
-                            Minting...
-                        </p>
-
-                        <progress className="progress w-full"></progress>
-                    </div>
-                )}
-
-                <button
-                    onClick={handleButtonClick}
-                    className={classNames({
-                        "btn btn-success flex-grow w-full": true,
-                        "opacity-50 pointer-none": isMinting,
-                        "btn-success": mediaState.data,
-                    })}
-                >
-                    Free!
-                </button>
+export function AttributeSelector({}) {
+    return (
+        <div className="w-full">
+            <div className="flex flex-col">
+                <AttributesArrowSelector attributeName="Background" />
+                <AttributesArrowSelector attributeName="Skin Color" />
+                <AttributesArrowSelector attributeName="Head" />
+                <AttributesArrowSelector attributeName="Face" />
+                <AttributesArrowSelector attributeName="Torso" />
+                <AttributesArrowSelector attributeName="Logo" />
+                <AttributesArrowSelector attributeName="Legs" />
+                <AttributesArrowSelector attributeName="Feet" />
             </div>
-        </>
+        </div>
     );
 }
 
@@ -151,9 +169,9 @@ function MyModal() {
             {/* First Modal */}
             <div className={`backdrop ${showConfirmMint ? 'backdrop-open' : ''}`}></div>
             <div className={`modal ${showConfirmMint ? 'modal-open' : ''}`} onClick={() => setShowConfirmMint(false)}>
-                <div className="modal-box inset-0 w-full sm:w-2xl h-auto max-h-full overflow-auto flex flex-col p-5 sm:p-5 relative" onClick={e => e.stopPropagation()}>
-                    <button className="absolute top-1 right-1 z-20 text-white font-bold py-2 px-3 rounded" onClick={() => setShowConfirmMint(false)}>
-                        <X size={14} />
+                <div className="modal-box inset-0 w-full sm:w-2xl h-auto max-h-full overflow-hidden flex flex-col p-5 sm:p-5 relative" onClick={e => e.stopPropagation()}>
+                    <button className="absolute -top-1 -right-1 z-20 text-white font-bold p-3 rounded" onClick={() => setShowConfirmMint(false)}>
+                        <X size={26} />
                     </button>
                     <div className="w-full flex flex-col justify-center">
                         <div className="relative w-full p-2">
@@ -194,22 +212,24 @@ function MyModal() {
     );    
 }
 
-function RandomButton() {
-    const { randomize } = useCharacterDesign();
+export function OnlyPossibleOnSolana() {
 
     return (
-        <button className="btn bg-secondary w-full border border-0 font-space-mono" onClick={randomize}>Random</button>
-    );
-}
+        <div className="glass p-4 rounded-xl">
+            <h3 className="font-bold text-xl text-gray-900">Only Possible on Solana</h3>
+            <p className="text-gray-800 text-xs mb-2">This project was built for the Only Possible on Solana hackathon to showcase the power of compressed NFTs and TipLink.</p>
+            
+            <i className="text-xs text-gray-800">Special Thanks</i>
 
-function ConfirmButton() {
-    const { setShowConfirmMint } = useCharacterDesign();
-
-    return (
-        <button className="btn w-full bg-primary bg-gray-900 border-0 font-space-mono" onClick={() => setShowConfirmMint(true)}>
-            Confirm Avatar
-        </button>
-    );
+            <div className="flex flex-row items-center flex-wrap mt-1">
+                <img src="https://solana.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogotype.e4df684f.svg&w=256&q=75" alt="" className="h-3 mr-4 mb-4" />
+                <img src="https://tiplink.io/logo.svg" className="h-5 mb-4 mr-4" alt="" />
+                <img src="https://assets-global.website-files.com/641a8c4cac3aee8bd266fd58/642b60b1a5d4305757babb46_Helius_mark_orange_copy_23-removebg-preview-p-500.png" alt="" className="h-5 mr-4 mb-4" />
+                <img src="https://assets.website-files.com/6331fecb532d6d3b1207028c/633b1acaef05130b4457fbd5_shadow-logo.svg" alt="" className="h-5 mr-4 mb-4" />
+                <img src="https://assets.website-files.com/62eab5597fa44882d84a8037/62eab5597fa44876504a8096_Metaplex%20Logo_White.svg" alt="" className="h-2 mr-4 mb-4" />
+            </div>
+        </div>
+    )
 }
 
 export function CharacterDesign() {
@@ -226,34 +246,36 @@ export function CharacterDesign() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 grid-flow-dense md:mt-4">
-                    <div className="w-full glass p-4 rounded-xl">
-                        <AttributeSelector />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:mt-4">
+                    <div className="order-1 md:order-0">
+                        <div className="w-full glass p-4 rounded-xl">
+                            <AttributeSelector />
 
-                        <RandomButton />
+                            <div className="hidden md:block">
+                                <RandomButton />
+                            </div>
+                        </div>
+
+                        <div className="md:hidden mt-8">
+                            <OnlyPossibleOnSolana />
+                        </div>
                     </div>
-                    <div className="w-full">
-                        <div>
-                            <div className="w-full glass p-4 rounded-xl shadow-xl mb-4">
-                                <div className="mb-3">
-                                    <MediaPreview />
-                                </div>
+
+                    <div className="w-full md:order-1">
+                        <div className="w-full glass p-4 rounded-xl shadow-xl mb-4">
+                            <MediaPreview />
+
+                            <div className="md:hidden my-3">
+                                <RandomButton />
+                            </div>
+
+                            <div className="mt-3">
                                 <ConfirmButton />
                             </div>
-                            <div className="glass p-4 rounded-xl">
-                                <h3 className="font-bold text-xl text-gray-900">Only Possible on Solana</h3>
-                                <p className="text-gray-800 text-xs mb-2">This project was built for the Only Possible on Solana hackathon to showcase the power of compressed NFTs and TipLink.</p>
-                                
-                                <i className="text-xs text-gray-800">Special Thanks</i>
+                        </div>
 
-                                <div className="flex flex-row items-center flex-wrap mt-1">
-                                    <img src="https://solana.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogotype.e4df684f.svg&w=256&q=75" alt="" className="h-3 mr-4 mb-4" />
-                                    <img src="https://tiplink.io/logo.svg" className="h-5 mb-4 mr-4" alt="" />
-                                    <img src="https://assets-global.website-files.com/641a8c4cac3aee8bd266fd58/642b60b1a5d4305757babb46_Helius_mark_orange_copy_23-removebg-preview-p-500.png" alt="" className="h-5 mr-4 mb-4" />
-                                    <img src="https://assets.website-files.com/6331fecb532d6d3b1207028c/633b1acaef05130b4457fbd5_shadow-logo.svg" alt="" className="h-5 mr-4 mb-4" />
-                                    <img src="https://assets.website-files.com/62eab5597fa44882d84a8037/62eab5597fa44876504a8096_Metaplex%20Logo_White.svg" alt="" className="h-2 mr-4 mb-4" />
-                                </div>
-                            </div>
+                        <div className="hidden md:block mt-3">
+                            <OnlyPossibleOnSolana />
                         </div>
                     </div>
                 </div>
