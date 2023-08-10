@@ -21,7 +21,7 @@ export default function RootLayout({
                 />
                 <meta
                     property="og:title"
-                    content="You received some crypto!"
+                    content="Unlimited NFT avatars! Collect them all!"
                 />
                 <meta
                     property="og:url"
@@ -43,7 +43,7 @@ export default function RootLayout({
                 <meta property="twitter:domain" content="opos.quest"/>
                 <meta name="twitter:site" content="@TipLinkOfficial"/>
                 <meta property="twitter:url" content="https://www.opos.quest/"/>
-                <meta name="twitter:title" content="You received some crypto!"/>
+                <meta name="twitter:title" content="Create your avatar!"/>
                 <meta name="twitter:description" content="Unlimited compressed NFT characters. Collect them all!"/>
                 <meta name="twitter:image" content="https://www.opos.quest/OPOSCard.png"/>
             </head>
