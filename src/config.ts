@@ -39,10 +39,21 @@ export const config: MintConfig  = {
         shadowAccount: SHADOW_ACCOUNT,
     },
 
+    defaultAttributes: {
+        Background: "Abstract",
+        "Skin Color": "Human 1",
+        Face: "Smile",
+        Head: "TipLink Helmet",  
+        Torso: "TipLink Shirt",  
+        Logo: "TipLink",       
+        Legs: "TipLink Pants",
+        Feet: "TipLink Shoes",
+    },
+
     attributes: {
         "Background": {
             "Abstract": "https://opos-outliers.vercel.app/attributes/Backgrounds/Abstract.png",
-            "TipLink": "https://opos-outliers.vercel.app/attributes/Backgrounds/TipLink.png",
+            "TipLink": "https://opos-outliers.vercel.app/attributes/Backgrounds/TipLink.png?1",
             "Blue": "https://opos-outliers.vercel.app/attributes/Backgrounds/Blue.png",
             "Green": "https://opos-outliers.vercel.app/attributes/Backgrounds/Green.png",
             "Grey": "https://opos-outliers.vercel.app/attributes/Backgrounds/Grey.png",

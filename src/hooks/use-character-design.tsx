@@ -27,7 +27,6 @@ const randomItem = (arr: any[]) => {
         item = arr[Math.floor(Math.random() * arr.length)];
     }
 
-    console.log(arr, item)
     return item;
 };
 

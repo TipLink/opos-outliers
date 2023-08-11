@@ -1,24 +1,18 @@
 "use client"
 
 /* eslint-disable @next/next/no-img-element */
+import { useState } from "react";
+
+import classNames from "classnames";
+
 import { config } from "@/config";
 
 import { CharacterDesignProvider, useCharacterDesign } from '@/hooks/use-character-design';
 
 import { AttributeSelector } from '@/components/attributes-selector';
 import { MediaPreview } from '@/components/media-preview';
-import { ConfirmAvatarModal } from '@/components/modals/confirm-avatar';
-import { Footer } from '@/components/footer';
-
-function ConfirmButton() {
-    const { setShowConfirmMint } = useCharacterDesign();
-
-    return (
-        <button className="btn w-full bg-primary bg-gray-900 border-0 font-space-mono" onClick={() => setShowConfirmMint(true)}>
-            Confirm Avatar
-        </button>
-    );
-}
+import { RecentlyMinted } from "@/components/recently-minted";
+import { NftDetailsModal } from "@/components/modals/nft-details";
 
 function RandomButton() {
     const { randomize } = useCharacterDesign();
@@ -47,9 +41,86 @@ function OnlyPossibleOnSolana() {
     )
 }
 
+function MintButton() {
+    const {
+        mint,
+        mediaState,
+        isMinting,
+    } = useCharacterDesign();
+
+    return (
+        <>  
+            <div className="w-full">
+                {isMinting && (
+                    <div>
+                        <p>
+                            Minting...
+                        </p>
+
+                        <progress className="progress w-full"></progress>
+                    </div>
+                )}
+
+                <button
+                    onClick={mint}
+                    className={classNames({
+                        "btn btn-success flex-grow w-full": true,
+                        "opacity-50 pointer-none": isMinting,
+                        "btn-success": mediaState.data,
+                    })}
+                >
+                    Free!
+                </button>
+            </div>
+        </>
+    );
+}
+
+function Media() {
+    const { mediaState } = useCharacterDesign();
+
+    return (
+        <MediaPreview
+            image={mediaState.data?.primary}
+            secondaryImage={mediaState.data?.pfp}
+            loading={mediaState.isLoading}
+        />
+    )
+}
+
+function Preview(props: {
+    children: React.ReactNode,
+    show: boolean,
+    setState: (state: boolean) => void }
+) {
+    const { attributeValuesMap, mediaState } = useCharacterDesign();
+
+    return (
+        <NftDetailsModal
+            show={props.show}
+            close={() => props.setState(false)}
+            item={{
+                id: "0",
+                name: config.metadata.name,
+                description: config.metadata.description,
+                image: mediaState.data?.primary || "",
+                secondaryImage: mediaState.data?.pfp || "",
+                attributes: Object.entries(attributeValuesMap).map(([trait_type, value]) => ({
+                    trait_type,
+                    value
+                }))
+            }}
+        >
+            {props.children}
+        </NftDetailsModal>
+    )
+}
+
 export default function Home() {
-  return (
-        <div className="min-h-screen p-3 w-full bg-cover bg-center bg-[url('/mobile-bg.jpg')] md:bg-[url('/bg.jpg')] flex flex-col justify-between">
+    const [showConfirmMint, setShowConfirmMint] = useState(false);
+
+    return (
+        <div className="md:min-h-screen p-3 w-full flex flex-col justify-between">
             <div className="max-w-3xl h-full mx-auto">
                 <CharacterDesignProvider config={config}>
                     <div className="">
@@ -80,14 +151,18 @@ export default function Home() {
 
                             <div className="w-full md:order-1">
                                 <div className="w-full glass p-4 rounded-xl shadow-xl mb-4">
-                                    <MediaPreview />
+                                    <Media />
 
                                     <div className="md:hidden my-3">
                                         <RandomButton />
                                     </div>
 
                                     <div className="mt-3">
-                                        <ConfirmButton />
+                                        <button
+                                            className="btn w-full bg-primary bg-gray-900 border-0 font-space-mono"
+                                            onClick={() => setShowConfirmMint(true)}>
+                                            Confirm Avatar
+                                        </button>
                                     </div>
                                 </div>
 
@@ -97,14 +172,21 @@ export default function Home() {
                             </div>
                         </div>
 
+                        <div className="my-3 md:col-span-3">
+                            <RecentlyMinted />
+                        </div>
+
                         <div className="mt-6 md:col-span-3">
-                            <ConfirmAvatarModal />
+                            <Preview
+                                show={showConfirmMint}
+                                setState={setShowConfirmMint}
+                            >
+                                <MintButton />
+                            </Preview>
                         </div>
                     </div>
                 </CharacterDesignProvider>
             </div>
-            
-            <Footer />
         </div>
     )
 }
