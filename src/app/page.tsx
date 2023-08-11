@@ -100,6 +100,7 @@ function Preview(props: {
             show={props.show}
             close={() => props.setState(false)}
             item={{
+                id: "0",
                 name: config.metadata.name,
                 description: config.metadata.description,
                 image: mediaState.data?.primary || "",

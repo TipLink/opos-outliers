@@ -17,24 +17,41 @@ export function NftDetailsModal(props: {
                     <button className="absolute top-0 right-0 z-20 text-white font-bold p-3 rounded" onClick={props.close}>
                         <X size={26} />
                     </button>
+
                     <div className="my-2"></div>
+                    
                     <div className="w-full flex flex-col justify-center">
                         <div className="relative w-full p-2">
                             <MediaPreview
                                 image={props.item.image}
                                 secondaryImage={props.item.secondaryImage}
                             />
-                            <div className="absolute bottom-4 left-4 flex-row space-y-1">
-                                <a href={props.item.image} download className="text-base-200">
-                                    <button className="bg-black text-white rounded py-1 px-2 mr-2 text-xs">
-                                        <Download className="inline-block w-4 h-4 mr-1 align-middle" />Primary
-                                    </button>
-                                </a>
-                                <a href={props.item.secondaryImage} download className="text-base-200">
-                                    <button className="bg-black text-white rounded py-1 px-2 text-xs">
-                                        <Download className="inline-block w-4 h-4 mr-1 align-middle" />PFP
-                                    </button>
-                                </a>
+                            
+                            <div className="absolute bottom-4 left-4 flex w-full">
+                                <div>
+                                    <a
+                                        href={props.item.image}
+                                        download
+                                        className="text-base-200 flex items-center"
+                                    >
+                                        <button className="bg-black text-white rounded py-1 px-2 mr-2 text-xs">
+                                            <Download className="inline-block w-4 h-4 mr-1 mb-1 align-middle" />
+                                            Primary
+                                        </button>
+                                    </a>
+
+                                </div>
+                                <div>
+                                    <a 
+                                        href={props.item.secondaryImage}
+                                        download
+                                        className="text-base-200 flex items-center"
+                                    >
+                                        <button className="bg-black text-white rounded py-1 px-2 text-xs">
+                                            <Download className="inline-block w-4 h-4 mr-1 align-middle mb-1" />PFP
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
