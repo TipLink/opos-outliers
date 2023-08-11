@@ -3,13 +3,16 @@
 
 import { ExternalLink } from "lucide-react";
 
+import classNames from "classnames";
+
 import { useEffect, useState, useMemo } from "react";
 
 import { getRecentlyMinted } from "@/actions/recently-minted";
 import { getMerkleTree } from "@/actions/merkle-tree";
 
 import { Item, MerkleTree } from "@/types";
-import classNames from "classnames";
+import { config } from "@/config";
+
 
 import { NftDetailsModal } from "@/components/modals/nft-details";
 
@@ -58,18 +61,13 @@ function Loader() {
 }
 
 export function RecentlyMinted() {
-    const trees = [
-        "tJTjTKqDdin8Xsjfb4Kx2vGcg1F7m19C53AUHnDcnCT",
-        "tL2TAswGPHjtCvxN9ez5y8TDrAU1Pxh8PEVmHC8tiyy",
-    ];
-
     const [ recentlyMinted, setRecentlyMinted ] = useState<Item[]>([]);
     const [ merkleTrees, setMerkleTrees ] = useState<MerkleTree[]>([]);
     const [ currentPage, setCurrentPage ] = useState<number>(1);
     const [ isLoadingMore, setIsLoadingMore ] = useState<boolean>(false);
 
     const fetchTrees = async () => {
-        const result = await Promise.all(trees.map(getMerkleTree));
+        const result = await Promise.all(config.productionEnvironment.trees.map(getMerkleTree));
 
         setMerkleTrees(result);
     };

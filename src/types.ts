@@ -28,6 +28,11 @@ export type MerkleTree = {
     treeHeight: number,
 }
 
+export type Account = {
+    address: string,
+    balance: number,
+}
+
 type Attribute = {
     trait_type: string,
     value: string,
@@ -60,13 +65,19 @@ export type AssetMetadata = {
 
 export type TreeConfig = {
     publicKey: string,
-    createTreeTransaction: string,
     maxDepth: number,
     maxBufferSize: number,
     canopy: number,
 }
 
 export type MintConfig = {
+    // Production values used for getting stats
+    productionEnvironment: {
+        payer: string,
+        trees: string[],
+        activeTree: string,
+    },
+
     // Tree config
     tree: TreeConfig,
 

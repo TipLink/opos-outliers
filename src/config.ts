@@ -19,10 +19,20 @@ export const config: MintConfig  = {
             category: "image",
         },  
     },
+
+    // Hardcoded values that represent the production environment
+    productionEnvironment: {
+        payer: "p7X5mwA9CKX6uZz4xwwD9Jqg3hUE9PWfgV3QBQsYfoh",
+        activeTree: "tJTjTKqDdin8Xsjfb4Kx2vGcg1F7m19C53AUHnDcnCT",
+        trees: [
+            "tL2TAswGPHjtCvxN9ez5y8TDrAU1Pxh8PEVmHC8tiyy",
+            "tJTjTKqDdin8Xsjfb4Kx2vGcg1F7m19C53AUHnDcnCT",
+        ],
+    },
     
+    // Based on local environment
     tree: {
         publicKey: MERKLE_TREE,
-        createTreeTransaction: "3BgCJoaMvLPw5T4AugQsMKV7Bqe9DPLsZKp9LWRPFuWcfuV6mPMP6WtVu1ymuFP2sK3DtEprddxkpwTqqr3u1knE",
         maxBufferSize: 64,
         maxDepth: 17,
         canopy: 8,
