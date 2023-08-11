@@ -1,5 +1,8 @@
 import "../styles/main.css";
+
 import type { Metadata } from 'next'
+
+import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
   title: 'OPOS Outliers',
@@ -51,9 +54,13 @@ export default function RootLayout({
                 <meta name="twitter:image" content="https://www.opos.quest/OPOSCard.png"/>
             </head>
             <body>
-                <main>
+                <div className="fixed top-0 left-0 w-screen h-screen bg-cover bg-center bg-[url('/mobile-bg.jpg')] md:bg-[url('/bg.jpg')]"></div>
+                <main className="relative">
                     {children}
                 </main>
+                <div className="relative p-3">
+                    <Footer />
+                </div>
             </body>
         </html>
     );    

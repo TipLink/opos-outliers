@@ -17,16 +17,38 @@ export type CollectionDetails = {
     collectionMetadataUri: string,
 }
 
+export type MerkleTree = {
+    authority: string,
+    canopyDepth: number,
+    creationSlot: number,
+    maxBufferSize: number,
+    rightMostIndex: number,
+    root: string,
+    seq: string,
+    treeHeight: number,
+}
+
+type Attribute = {
+    trait_type: string,
+    value: string,
+}
+
+export type Item = {
+    image: string;
+    secondaryImage: string;
+    name: string;
+    attributes: Attribute[];
+    description: string;
+    id: string;
+}
+
 export type AssetMetadata = {
     name: string,
     symbol: string,
     description: string,
     external_url: string,
     image?: string,
-    attributes?: {
-        trait_type: string,
-        value: string,
-    }[],
+    attributes?: Attribute[],
     properties: {
         files: {
             uri: string,
@@ -47,6 +69,9 @@ export type TreeConfig = {
 export type MintConfig = {
     // Tree config
     tree: TreeConfig,
+
+    // Default attributes
+    defaultAttributes: AttributesMap,
 
     // Attribute combinations
     attributes: AttributesConfig;

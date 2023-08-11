@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 export function Footer() {
     return (
-        <footer className="flex justify-between items-center flex-wrap">
-            <img src="https://tiplink.io/_next/static/media/powered-tiplink.2b2adbb2.png" className="h-4" alt="tiplink" />
+        <footer className="flex justify-between items-center flex-wrap text-gray-800 md:text-gray-300">
+            <img src="https://tiplink.io/_next/static/media/powered-tiplink.2b2adbb2.png" className="invert md:invert-0 h-4" alt="tiplink" />
 
             <div className="flex text-xs">
                 <p className="mr-1">Art by</p>
