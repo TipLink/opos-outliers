@@ -53,7 +53,6 @@ export function CharacterDesignProvider({ children }: { children: ReactNode, con
     const { mediaState, generatePreview } = useGenerateMedia();
 
     const [ isMinting, setIsMinting ] = useState(false);
-
     
     const setAttributeValue = (attributeName: string, newValue: string) => {
         attributeValuesMap[attributeName] = newValue;
