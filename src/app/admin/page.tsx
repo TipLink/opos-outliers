@@ -24,13 +24,21 @@ function TreeStats(props: { address: string }) {
 
     return (
         <div className="glass p-5 rounded mb-5">
-            <h2 className="text-2xl font-bold">Tree</h2>
+            <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-bold">Tree</h2>
+                {config.productionEnvironment.activeTree === props.address && (
+                    <div className="badge badge-accent">Active</div>
+                )}
+            </div>
+
             <a className="text-xs link" href={"https://xray.helius.xyz/account/" + props.address + "/concurrent-merkle-tree"}>{props.address}</a>
 
             <div className="grid grid-cols-3 my-5">
                 <div>
-                    <p className="font-bold text-xs">Max Buffer Size</p>
-                    <p className="font-bold text-md">{merkleTree?.maxBufferSize.toLocaleString() || "..."}</p>
+                    <p className="font-bold text-xs">Used Leaves</p>
+                    <p className="font-bold text-md">
+                        {merkleTree?.rightMostIndex.toLocaleString() || "..."}
+                    </p>
                 </div>
                 <div>
                     <p className="font-bold text-xs">Maximum Leaves</p>
@@ -42,6 +50,9 @@ function TreeStats(props: { address: string }) {
                 </div>
             </div>
 
+            <p className="text-xs">
+                {((merkleTree?.rightMostIndex / Math.pow(2, merkleTree?.treeHeight)) * 100).toLocaleString()}%
+            </p>
             <progress
                 className="progress progress-success w-full"
                 value={merkleTree?.rightMostIndex}
