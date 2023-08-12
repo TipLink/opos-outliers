@@ -24,6 +24,8 @@ const isDefault = (attributes: {
 }
 
 export async function getRecentlyMinted(page = 1) {
+    console.log("Getting recently minted page", page);
+
     const response = await fetch(RPC_URL, {
         method: "POST",
         headers: {
@@ -62,6 +64,8 @@ export async function getRecentlyMinted(page = 1) {
             id: item?.id
         }
     }).filter((item: any) => !isDefault(item.attributes));
+
+    console.log("Fetched recently minted", formatted.length, "items");
 
     return formatted as Item[];
 }
