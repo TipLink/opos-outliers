@@ -102,7 +102,7 @@ const createMintInstruction = (
                 creators: [],
                 editionNonce: 0,
                 tokenProgramVersion: TokenProgramVersion.Original,
-                tokenStandard: null,
+                tokenStandard: 0, // NFT
                 uses: null,
                 primarySaleHappened: false,
                 sellerFeeBasisPoints: 0,
