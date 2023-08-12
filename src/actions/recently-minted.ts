@@ -2,6 +2,7 @@
 
 const {
     RPC_URL = "",
+    COLLECTION_MINT = ""
 } = process.env;
 
 import { Item } from "@/types";
@@ -20,7 +21,7 @@ const isDefault = (attributes: {
         }
     }
 
-    return matches === attributes.length;
+    return matches > 6;
 }
 
 export async function getRecentlyMinted(page = 1) {
@@ -36,7 +37,7 @@ export async function getRecentlyMinted(page = 1) {
             "id": "string",
             "method": "searchAssets",
             "params": {
-                grouping: ["collection", "4L8TbnM8UwobHBAkJZoU5qzexN6WVUWeEKC72TxkBJ4b"],
+                grouping: ["collection", COLLECTION_MINT],
                 page,
                 "limit": 100,
                 "compressed": true,
