@@ -97,7 +97,11 @@ export const config: MintConfig  = {
             "None": "https://opos-outliers.vercel.app/attributes/None.png",
         },
         "Head": {
-            "TipLink Helmet": "https://opos-outliers.vercel.app/attributes/Heads/Special/TippyHead.png",
+            "Tippy": "https://opos-outliers.vercel.app/attributes/Heads/Special/TippyHead.png",
+            "Dark Tippy": "https://opos-outliers.vercel.app/attributes/Heads/Special/TippyHead.png",
+            "DAA": "https://opos-outliers.vercel.app/attributes/Heads/Hai/Hair:Hat/DAA.png",
+            "Samo": "https://opos-outliers.vercel.app/attributes/Heads/Hai/Hair:Hat/Samo.png",
+            "SMB": "https://opos-outliers.vercel.app/attributes/Heads/Hai/Hair:Hat/SMB.png",
             "Baby": "https://opos-outliers.vercel.app/attributes/Heads/Hair/Hair:Hat/Baby.png",
             "Black Beanie": "https://opos-outliers.vercel.app/attributes/Heads/Hair/Hair:Hat/BeanieBlack.png",
             "Orange Beanie": "https://opos-outliers.vercel.app/attributes/Heads/Hair/Hair:Hat/BeanieOrange.png",
@@ -125,7 +129,11 @@ export const config: MintConfig  = {
         },
         "Logo": {
             "TipLink": "https://opos-outliers.vercel.app/attributes/Torso/Logos/TipLink.png",
-            "Helius": "https://opos-outliers.vercel.app/attributes/Torso/Logos/Helius.png",
+            "Helius": "https://opos-outliers.vercel.app/attributes/Torso/Logos/Helius.png?1",
+            "Helium": "https://opos-outliers.vercel.app/attributes/Torso/Logos/Helium.png",
+            "Metaplex": "https://opos-outliers.vercel.app/attributes/Torso/Logos/Metaplex.png",
+            "Solana": "https://opos-outliers.vercel.app/attributes/Torso/Logos/Solana.png",
+            "Solarplex": "https://opos-outliers.vercel.app/attributes/Torso/Logos/Solarplex.png",
             "None": "https://opos-outliers.vercel.app/attributes/None.png",
         },
         "Legs": {
