@@ -2,8 +2,6 @@
 
 import type { AssetMetadata, AttributesMap, GenerateMediaResponse } from '@/types';
 
-import path from "path";
-
 import sharp from "sharp";
 
 import { config } from '@/config';
