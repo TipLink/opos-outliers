@@ -134,6 +134,7 @@ export const config: MintConfig  = {
             "Metaplex": "https://opos-outliers.vercel.app/attributes/Torso/Logos/Metaplex.png",
             "Solana": "https://opos-outliers.vercel.app/attributes/Torso/Logos/Solana.png",
             "Solarplex": "https://opos-outliers.vercel.app/attributes/Torso/Logos/Solarplex.png",
+            "3Land": "https://opos-outliers.vercel.app/attributes/Torso/Logos/3Land.png",
             "None": "https://opos-outliers.vercel.app/attributes/None.png",
         },
         "Legs": {
