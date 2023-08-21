@@ -63,7 +63,8 @@ export const config: MintConfig  = {
     attributes: {
         "Background": {
             "Abstract": "https://opos-outliers.vercel.app/attributes/Backgrounds/Abstract.png",
-            "TipLink": "https://opos-outliers.vercel.app/attributes/Backgrounds/TipLink.png?1",
+            "TipLink": "https://opos-outliers.vercel.app/attributes/Backgrounds/TipLink.png?2",
+            "DAA": "https://opos-outliers.vercel.app/attributes/Backgrounds/DAA.png?1",
             "Blue": "https://opos-outliers.vercel.app/attributes/Backgrounds/Blue.png",
             "Green": "https://opos-outliers.vercel.app/attributes/Backgrounds/Green.png",
             "Grey": "https://opos-outliers.vercel.app/attributes/Backgrounds/Grey.png",
@@ -102,6 +103,10 @@ export const config: MintConfig  = {
             "DAA": "https://opos-outliers.vercel.app/attributes/Heads/Hai/Hair:Hat/DAA.png",
             "Samo": "https://opos-outliers.vercel.app/attributes/Heads/Hai/Hair:Hat/Samo.png",
             "SMB": "https://opos-outliers.vercel.app/attributes/Heads/Hai/Hair:Hat/SMB.png",
+            "Bonk": "https://opos-outliers.vercel.app/attributes/Heads/Hai/Hair:Hat/Bonk.png",
+            "Pony Tail 1": "https://opos-outliers.vercel.app/attributes/Heads/Hai/Hair:Hat/Pony Tail1.png",
+            "Pony Tail 2": "https://opos-outliers.vercel.app/attributes/Heads/Hai/Hair:Hat/Pony Tail2.png",
+            "Pony Tail 3": "https://opos-outliers.vercel.app/attributes/Heads/Hai/Hair:Hat/Pony Tail3.png",
             "Baby": "https://opos-outliers.vercel.app/attributes/Heads/Hair/Hair:Hat/Baby.png",
             "Black Beanie": "https://opos-outliers.vercel.app/attributes/Heads/Hair/Hair:Hat/BeanieBlack.png",
             "Orange Beanie": "https://opos-outliers.vercel.app/attributes/Heads/Hair/Hair:Hat/BeanieOrange.png",
