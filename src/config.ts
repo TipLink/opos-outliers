@@ -139,7 +139,6 @@ export const config: MintConfig  = {
             "Metaplex": "https://staging.opos.quest/attributes/Torso/Logos/Metaplex.png",
             "Solana": "https://staging.opos.quest/attributes/Torso/Logos/Solana.png",
             "Solarplex": "https://staging.opos.quest/attributes/Torso/Logos/Solarplex.png",
-            "3Land": "https://staging.opos.quest/attributes/Torso/Logos/3Land.png",
             "None": "https://staging.opos.quest/attributes/None.png",
         },
         "Legs": {
