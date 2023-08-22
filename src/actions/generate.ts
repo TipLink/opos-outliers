@@ -91,10 +91,10 @@ export const generateMedia = async (attributes: AttributesMap, { base64 } = { ba
         
         // Extract primary media
         const primary = await sharp(mainBuffer).extract({
-            left: 110,
-            top: 75,
-            width: 420,
-            height: 420,
+            left: 0,
+            top: 0,
+            width: 640,
+            height: 640,
         }).toBuffer();
         
         // Extract pfp media
