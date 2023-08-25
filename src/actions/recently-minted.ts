@@ -34,7 +34,7 @@ export async function getRecentlyMinted(page = 1) {
         },
         body: JSON.stringify({
             "jsonrpc": "2.0",
-            "id": "string",
+            "id": Date.now(),
             "method": "searchAssets",
             "params": {
                 grouping: ["collection", COLLECTION_MINT],
