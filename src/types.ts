@@ -70,6 +70,10 @@ export type TreeConfig = {
     canopy: number,
 }
 
+type NewAttributes = {
+    [key: string]: string[];
+}
+
 export type MintConfig = {
     // Production values used for getting stats
     productionEnvironment: {
@@ -83,6 +87,9 @@ export type MintConfig = {
 
     // Default attributes
     defaultAttributes: AttributesMap,
+
+    // Attributes to highlight as "new"
+    newAttributes: NewAttributes,
 
     // Attribute combinations
     attributes: AttributesConfig;
