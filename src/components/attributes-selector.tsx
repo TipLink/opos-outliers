@@ -40,9 +40,9 @@ function ArrowSelector({
             <div className="flex-1 bg-magenta-200 text-center overflow-hidden">
                 <div className="flex justify-center items-center">
                     <p className="text-xs whitespace-nowrap overflow-ellipsis text-white md:text-gray-200">{label}</p>
-                    {newAtrributes.length && newAtrributes?.includes(options[idx]) && (
+                    {newAtrributes.length && newAtrributes?.includes(options[idx]) ? (
                         <div className="badge badge-xs badge-primary font-bold p-1 ml-1">New</div>
-                    )}
+                    ) : null}
                 </div>
                 <p className="whitespace-nowrap overflow-ellipsis text-white font-bold">{options[selectedIndex || idx]}</p>
             </div>

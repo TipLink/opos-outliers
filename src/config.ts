@@ -77,6 +77,7 @@ export const config: MintConfig  = {
             "Solana",
             "Solarplex",
             "Logo",
+            "Drift"
         ]
     },
 
@@ -159,7 +160,7 @@ export const config: MintConfig  = {
             "Metaplex": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Metaplex.png",
             "Solana": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Solana.png",
             "Solarplex": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Solarplex.png",
-            "Drift": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Drift.png",
+            "Drift": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Drift.png?1",
             "None": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/None.png",
         },
         "Legs": {
