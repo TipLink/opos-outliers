@@ -24,7 +24,7 @@ const isDefault = (attributes: {
     return matches > 6;
 }
 
-export async function getRecentlyMinted(page = 1) {
+export async function getRecentlyMinted(page = 1, id: number = 0) {
     console.log("Getting recently minted page", page);
 
     const response = await fetch(RPC_URL, {
@@ -34,7 +34,7 @@ export async function getRecentlyMinted(page = 1) {
         },
         body: JSON.stringify({
             "jsonrpc": "2.0",
-            "id": Date.now(),
+            "id": id,
             "method": "searchAssets",
             "params": {
                 grouping: ["collection", COLLECTION_MINT],
@@ -53,7 +53,7 @@ export async function getRecentlyMinted(page = 1) {
     const formatted = response.result.items.map((item) => {
         const [
             image,
-            secondaryImage,
+            secondaryImage = {},
         ] = item?.content?.files;
 
         return {

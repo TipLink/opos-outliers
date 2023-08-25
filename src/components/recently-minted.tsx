@@ -73,14 +73,14 @@ export function RecentlyMinted() {
     };
 
     const fetchRecent = async () => {
-        setRecentlyMinted(await getRecentlyMinted());
+        setRecentlyMinted(await getRecentlyMinted(currentPage, Date.now()));
     }
 
     const loadMore = async () => {
         setIsLoadingMore(true);
 
         try {
-            const result = await getRecentlyMinted(currentPage + 1);
+            const result = await getRecentlyMinted(currentPage + 1, Date.now());
     
             if(result.length) {
                 setRecentlyMinted([...recentlyMinted, ...result]);
