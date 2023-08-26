@@ -52,19 +52,19 @@ export async function getRecentlyMinted(page = 1, id: number = 0) {
     // @ts-ignore
     const formatted = response.result.items.map((item) => {
         const [
-            image,
+            image = {},
             secondaryImage = {},
         ] = item?.content?.files;
 
         return {
-            image: image.cdn_uri,
+            image: image?.cdn_uri,
             secondaryImage: secondaryImage?.cdn_uri,
             name: item?.content?.metadata?.name,
-            attributes: item?.content?.metadata?.attributes,
+            attributes: item?.content?.metadata?.attributes || [],
             description: item?.content?.metadata?.description,
             id: item?.id
         }
-    }).filter((item: any) => !isDefault(item.attributes));
+    }).filter((item: any) => !isDefault(item.attributes) && item.image && item.attributes.length > 0);
 
     console.log("Fetched recently minted", formatted.length, "items");
 
