@@ -61,6 +61,7 @@ export const config: MintConfig  = {
     },
 
     newAttributes: {
+        Background: [ "DAA" ],
         Head: [
             "Dark Tippy",
             "DAA",
@@ -84,8 +85,8 @@ export const config: MintConfig  = {
     attributes: {
         "Background": {
             "Abstract": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Backgrounds/Abstract.png",
-            "TipLink": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Backgrounds/TipLink.png?2",
-            "DAA": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Backgrounds/DAA.png?1",
+            "TipLink": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Backgrounds/TipLink.png?3",
+            "DAA": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Backgrounds/DAA.png?2",
             "Blue": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Backgrounds/Blue.png",
             "Green": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Backgrounds/Green.png",
             "Grey": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Backgrounds/Grey.png",
@@ -121,10 +122,10 @@ export const config: MintConfig  = {
         "Head": {
             "Tippy": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Special/TippyHead.png",
             "Dark Tippy": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Special/TippyHeadDark.png",
-            "DAA": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/DAA.png",
-            "Samo": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/Samo.png",
-            "SMB": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/SMB.png",
-            "Bonk": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/Bonk.png",
+            "DAA": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/DAA.png?3",
+            "Samo": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/Samo.png?3",
+            "SMB": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/SMB.png?3",
+            "Bonk": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/Bonk.png?3",
             "Pony Tail 1": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/Pony Tail1.png",
             "Pony Tail 2": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/Pony Tail2.png",
             "Pony Tail 3": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/Pony Tail3.png",
@@ -155,7 +156,7 @@ export const config: MintConfig  = {
         },
         "Logo": {
             "TipLink": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/TipLink.png",
-            "Helius": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Helius.png?1",
+            "Helius": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Helius.png?2",
             "Helium": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Helium.png",
             "Metaplex": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Metaplex.png",
             "Solana": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Solana.png",
