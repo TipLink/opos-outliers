@@ -71,6 +71,7 @@ export const config: MintConfig  = {
             "Pony Tail 2",
             "Pony Tail 3",
             "DAA",
+            "SMB"
         ],
         Logo: [
             "Helium",

@@ -1,3 +1,4 @@
+
 "use client"
 
 import type { AttributesMap, MediaResponse } from "@/types";
@@ -14,7 +15,7 @@ export function useGenerateMedia() {
         setState((prev) => ({
             ...prev,
             isLoading: true,
-        }));
+    }));
 
         try {
             // Try to character preview

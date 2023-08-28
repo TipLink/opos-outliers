@@ -39,7 +39,7 @@ export async function getRecentlyMinted(page = 1, id: number = 0) {
             "params": {
                 grouping: ["collection", COLLECTION_MINT],
                 page,
-                "limit": 100,
+                "limit": 200,
                 "compressed": true,
                 "sortBy": {
                     "sortBy": "updated",
