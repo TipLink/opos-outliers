@@ -125,7 +125,7 @@ export const config: MintConfig  = {
             "DAA": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/DAA.png?3",
             "Samo": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/Samo.png?3",
             "SMB": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/SMB.png?3",
-            "Bonk": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/Bonk.png?3",
+            "Bonk": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/Bonk.png",
             "Pony Tail 1": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/Pony Tail1.png",
             "Pony Tail 2": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/Pony Tail2.png",
             "Pony Tail 3": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Heads/Hair/Hair:Hat/Pony Tail3.png",

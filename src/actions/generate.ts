@@ -100,10 +100,10 @@ export const generateMedia = async (attributes: AttributesMap, { base64 } = { ba
         // Extract pfp media
         const pfp = await sharp(mainBuffer)
             .extract({
-                left: 150,
-                top: 0,
-                width: 350,
-                height: 350,
+                left: 155,
+                top: 10,
+                width: 325,
+                height: 325,
             }).toBuffer();
 
         if (base64) {
