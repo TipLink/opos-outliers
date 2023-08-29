@@ -49,12 +49,12 @@ function ArrowSelector({
             <button className="btn bg-secondary border-0 relative" onClick={next}>
                 <img src="/right.png" alt="My Custom Button" style={{ width: '30px', height: '30px' }} />
                 
-                {newAtrributes.length ?
+                {/* {newAtrributes.length ?
                     <>
                         <div className="animate-ping absolute w-3 h-3 rounded-full bg-warning -right-1 -top-1"></div>
                         <div className="absolute w-3 h-3 opacity-75 rounded-full bg-warning -right-1 -top-1"></div>
                     </> : null
-                }
+                } */}
             </button>
         </div>
     );
