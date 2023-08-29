@@ -158,7 +158,7 @@ export const config: MintConfig  = {
         "Logo": {
             "TipLink": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/TipLink.png",
             "Helius": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Helius.png?2",
-            "Helium": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Helium.png",
+            "Helium": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Helium.png?1",
             "Metaplex": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Metaplex.png",
             "Solana": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Solana.png",
             "Solarplex": "https://opos-outliers-git-vercel-staging-tiplink.vercel.app/attributes/Torso/Logos/Solarplex.png",
