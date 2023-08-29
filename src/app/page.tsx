@@ -175,7 +175,7 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div className="my-3 md:col-span-3">
                             <RecentlyMinted />
                         </div>
