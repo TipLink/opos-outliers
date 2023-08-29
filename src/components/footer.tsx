@@ -13,7 +13,7 @@ export function Footer() {
                 <a className="link flex items-center mr-5 text-xs" href="https://twitter.com/TipLinkOfficial" target="_blank">
                     Twitter
                 </a>
-                <a className="link flex items-center text-xs mr-5" href="https://discord.gg/tVajHVnv" target="_blank">
+                <a className="link flex items-center text-xs mr-5" href="https://discord.gg/wBGbVEXN" target="_blank">
                     Discord
                 </a>
                 <a className="link flex items-center text-xs" href="https://github.com/TipLink/opos-outliers" target="_blank">

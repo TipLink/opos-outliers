@@ -2,8 +2,6 @@
 
 import type { AssetMetadata, AttributesMap, GenerateMediaResponse } from '@/types';
 
-import path from "path";
-
 import sharp from "sharp";
 
 import { config } from '@/config';
@@ -93,19 +91,19 @@ export const generateMedia = async (attributes: AttributesMap, { base64 } = { ba
         
         // Extract primary media
         const primary = await sharp(mainBuffer).extract({
-            left: 110,
-            top: 75,
-            width: 420,
-            height: 420,
+            left: 60,
+            top: 0,
+            width: 520,
+            height: 520,
         }).toBuffer();
         
         // Extract pfp media
         const pfp = await sharp(mainBuffer)
             .extract({
-                left: 195,
-                top: 75,
-                width: 250,
-                height: 250,
+                left: 155,
+                top: 10,
+                width: 325,
+                height: 325,
             }).toBuffer();
 
         if (base64) {

@@ -9,6 +9,7 @@ type SelectorProps = {
     options: string[];
     label?: string;
     selectedIndex?: number;
+    newAtrributes: string[];
     onChange: (idx: number) => void;
 };
 
@@ -17,6 +18,7 @@ function ArrowSelector({
     label,
     selectedIndex = 0,
     onChange,
+    newAtrributes
 }: SelectorProps) {
     const [idx, setIdx] = useState<number>(0);
 
@@ -36,17 +38,27 @@ function ArrowSelector({
                 <img src="/leftA.png" alt="My Custom Button" style={{ width: '30px', height: '30px' }} />
             </button>
             <div className="flex-1 bg-magenta-200 text-center overflow-hidden">
-                <p className="text-xs whitespace-nowrap overflow-ellipsis text-white md:text-gray-200">{label}</p>
+                <div className="flex justify-center items-center">
+                    <p className="text-xs whitespace-nowrap overflow-ellipsis text-white md:text-gray-200">{label}</p>
+                    {newAtrributes.length && newAtrributes?.includes(options[idx]) ? (
+                        <div className="badge badge-xs badge-primary font-bold p-1 ml-1">New</div>
+                    ) : null}
+                </div>
                 <p className="whitespace-nowrap overflow-ellipsis text-white font-bold">{options[selectedIndex || idx]}</p>
             </div>
-            <button className="btn bg-secondary border-0" onClick={next}>
+            <button className="btn bg-secondary border-0 relative" onClick={next}>
                 <img src="/right.png" alt="My Custom Button" style={{ width: '30px', height: '30px' }} />
+                
+                {/* {newAtrributes.length ?
+                    <>
+                        <div className="animate-ping absolute w-3 h-3 rounded-full bg-warning -right-1 -top-1"></div>
+                        <div className="absolute w-3 h-3 opacity-75 rounded-full bg-warning -right-1 -top-1"></div>
+                    </> : null
+                } */}
             </button>
         </div>
     );
 }
-
-
 
 const AttributesArrowSelector = ({ attributeName } : { attributeName : string }) => {
     const { setAttributeValue, attributeValuesMap } = useCharacterDesign();
@@ -54,12 +66,15 @@ const AttributesArrowSelector = ({ attributeName } : { attributeName : string })
     const options = Object.keys(config.attributes[attributeName]);
     const selectedIndex = options.indexOf(attributeValuesMap[attributeName]);
 
+    const newAtrributes = config.newAttributes[attributeName] || [];
+
     return (
         <div className="font-space-mono flex" key={attributeName}>
             <ArrowSelector
                 options={options}
                 label={attributeName}
                 selectedIndex={selectedIndex}
+                newAtrributes={newAtrributes}
                 onChange={(newAttributeValueIndex) => {
                     setAttributeValue(attributeName, options[newAttributeValueIndex]);
                 }}
