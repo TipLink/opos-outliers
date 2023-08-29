@@ -60,11 +60,16 @@ function Loader() {
     )
 }
 
+import { useCharacterDesign } from "@/hooks/use-character-design";
+
 export function RecentlyMinted() {
     const [ recentlyMinted, setRecentlyMinted ] = useState<Item[]>([]);
     const [ merkleTrees, setMerkleTrees ] = useState<MerkleTree[]>([]);
     const [ currentPage, setCurrentPage ] = useState<number>(1);
     const [ isLoadingMore, setIsLoadingMore ] = useState<boolean>(false);
+    const [ hasFetched, setHasFetched ] = useState<boolean>(false);
+
+    const { mediaState } = useCharacterDesign();
 
     const fetchTrees = async () => {
         const result = await Promise.all(config.productionEnvironment.trees.map(getMerkleTree));
@@ -92,18 +97,18 @@ export function RecentlyMinted() {
         } finally {
             setIsLoadingMore(false);
         }
-
     }    
 
     useEffect(() => {
-        if(!recentlyMinted.length) {
-            fetchRecent();
+        if(hasFetched || !mediaState.data?.primary) {
+            return
         }
 
-        if(!merkleTrees.length) {
-            fetchTrees();
-        }
-    }, []);
+        setHasFetched(true);
+
+        fetchRecent();
+        fetchTrees();
+    }, [mediaState.data?.primary]);
 
     const totalCount = useMemo(() => {
         return merkleTrees.reduce((acc, tree) => acc + tree?.rightMostIndex, 0);
