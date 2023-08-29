@@ -78,7 +78,10 @@ export function RecentlyMinted() {
     };
 
     const fetchRecent = async () => {
-        setRecentlyMinted(await getRecentlyMinted(currentPage, Date.now()));
+        const recent = await getRecentlyMinted(currentPage, Date.now());
+        setRecentlyMinted(recent);
+
+        console.log("Fetched recently minted:", { recent });
     }
 
     const loadMore = async () => {
@@ -105,9 +108,13 @@ export function RecentlyMinted() {
         }
 
         setHasFetched(true);
-
-        fetchRecent();
-        fetchTrees();
+        
+        try {
+            fetchRecent();
+            fetchTrees();
+        } catch (error) {
+            console.log("Failed to fetch recently minted", error);
+        }
     }, [mediaState.data?.primary]);
 
     const totalCount = useMemo(() => {
@@ -116,11 +123,6 @@ export function RecentlyMinted() {
 
     const [ showDetails, setShowDetails ] = useState<boolean>(false);
     const [ selectedItem, setSelectedItem ] = useState<Item>();
-
-    console.log({
-        showDetails,
-        selectedItem
-    })
 
     return (
         <>

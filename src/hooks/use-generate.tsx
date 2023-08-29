@@ -18,11 +18,15 @@ export function useGenerateMedia() {
     }));
 
         try {
+            console.log("Generating media preview...");
+
             // Try to character preview
             const {
                 primary,
                 pfp,
             } = await generateMedia(payload, { base64: true });
+
+            console.log(`Generated media preview`, {media: { primary, pfp}})
 
             if(!primary || !pfp) {
                 throw new Error("Something went wrong generating the media");
@@ -36,6 +40,7 @@ export function useGenerateMedia() {
                 },
             }))
         } catch (error) {
+            console.log("Error generating media preview", error)
             // Whoops
             setState((prev) => ({
                 ...prev,

@@ -25,6 +25,8 @@ export function useStageMint()  {
                 secondaryImageUrl
             } = await generateAndUploadMedia({ attributes });
 
+            console.log("Generating and uploading media...");
+
             const {
                 metadataUri
             } = await generateAndUploadMetadata({
@@ -32,6 +34,8 @@ export function useStageMint()  {
                 imageUrl,
                 secondaryImageUrl,
             });
+
+            console.log("Metadata uploaded!", metadataUri);
 
             setStagedMint((prev) => ({
                 ...prev,
@@ -42,7 +46,7 @@ export function useStageMint()  {
 
             return metadataUri;
         } catch (error) {
-            console.log('error', error)
+            console.log('Failed to upload', error)
             // Whoops
             setStagedMint((prev) => ({
                 ...prev,
@@ -76,8 +80,12 @@ export function useMintStaged() {
         }));
 
         try {
+            console.log("Minting NFT...");
+
             // Try to mint the character
             const result = await mint(payload);
+
+            console.log("Minted!");
 
             setMintState((prev) => ({
                 ...prev,
@@ -86,6 +94,8 @@ export function useMintStaged() {
 
             return result;
         } catch (error) {
+            console.log("Failed to mint", error);
+
             // Whoops
             setMintState((prev) => ({
                 ...prev,
