@@ -106,7 +106,7 @@ export function RecentlyMinted() {
     }, []);
 
     const totalCount = useMemo(() => {
-        return merkleTrees.reduce((acc, tree) => acc + tree.rightMostIndex, 0);
+        return merkleTrees.reduce((acc, tree) => acc + tree?.rightMostIndex, 0);
     }, [merkleTrees]);
 
     const [ showDetails, setShowDetails ] = useState<boolean>(false);
