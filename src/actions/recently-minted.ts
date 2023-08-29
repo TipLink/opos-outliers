@@ -64,9 +64,9 @@ export async function getRecentlyMinted(page = 1, id: number = 0) {
             description: item?.content?.metadata?.description,
             id: item?.id
         }
-    }).filter((item: any) => !isDefault(item.attributes) && item.image && item.attributes.length > 0);
+    }).filter((item: any) => !isDefault(item.attributes) && item.image && item.attributes?.length > 0);
 
-    console.log("Fetched recently minted", formatted.length, "items");
+    console.log("Fetched recently minted", formatted?.length, "items");
 
     return formatted as Item[];
 }
